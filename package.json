@@ -1,0 +1,16 @@
+{
+  "name": "TestPage",
+  "version": "1.0.0",
+  "description": "**TestPage** is an open-source tool for running accessibility tests on web pages specified by URL. It generates test results in JSON, HTML, and XLSX formats.",
+  "main": "testPage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["a11y", "automation"],
+  "author": "Jamal Mazrui",
+  "license": "MIT",
+  "dependencies": {
+    "accessibility-checker": "^3.1.23",
+    "puppeteer-core": "^23.10.3"
+  }
+}
