@@ -1,4 +1,3 @@
-// let { execSync } = require('child_process');
 let puppeteer = require("puppeteer-core");
 let fs = require("fs");
 let path = require("path");
@@ -81,8 +80,6 @@ function renameIfExists(sOldPath, sNewPath) {
     sPageTitle = await sPageTitle.replace(/[^a-zA-Z0-9_,#\.\-]/gi, " ");
     sPageTitle = await sPageTitle.replace(/\s+/gi, " ").trim();
 
-    //         if (!fs.existsSync(sOutputDir)) fs.mkdirSync(sOutputDir);
-    // await page.addScriptTag({ url: "https://unpkg.com/accessibility-checker-engine@latest/ace.js"});
     sOutputDir = await generateUniqueDirName(sPageTitle);
     console.log(path.basename(sOutputDir));
     console.log();
@@ -100,40 +97,8 @@ function renameIfExists(sOldPath, sNewPath) {
     if (sTargetYml != sSourceYml) await fs.unlinkSync(sTargetYml);
     await fs.writeFileSync(sSourceYml, sOldYml);
 
-    /*
-        let sCsvPath = await generateUniqueFileName(sPageTitle, 'csv');
-//         let sJsonPath = await generateUniqueFileName(sPageTitle, 'json');
-        let sHtmlPath = await generateUniqueFileName(sPageTitle, 'html');
-        let sXlsxPath = await generateUniqueFileName(sPageTitle, 'xlsx');
-
-        await renameIfExists(path.join(sOutputDir, 'results.csv'), sCsvPath);
- await          renameIfExists(path.join(sOutputDir, 'results.json'), sJsonPath);
- await         renameIfExists(path.join(sOutputDir, 'results.html'), sHtmlPath);
- await         renameIfExists(path.join(sOutputDir, 'results.xlsx'), sXlsxPath);
-
-// if (fs.existsSync(sCsvPath)) {
-if (false) {
- let sCsvData = await fs.readFileSync(sCsvPath, 'utf8');
- let sFormattedCsv = await prettier.format(sCsvData, { parser: 'csv' });
- await         fs.writeFileSync(sCsvPath, sFormattedCsv, 'utf8');
-} 
-
-   if (fs.existsSync(sJsonPath)) {
- let sJsonData = await fs.readFileSync(sJsonPath, 'utf8');
- let sFormattedJson = await prettier.format(sJsonData, { parser: 'json' });
- await         fs.writeFileSync(sJsonPath, sFormattedJson, 'utf8');
-}
-
-if (fs.existsSync(sHtmlPath)) {
- let sHtmlData = await fs.readFileSync(sHtmlPath, 'utf8');
-         let sFormattedHtml = await prettier.format(sHtmlData, { parser: 'html' });
- await         fs.writeFileSync(sHtmlPath, sFormattedHtml, 'utf8');
-}
-*/
-
     await page.close();
   } // while
   await browser.close();
   // console.log("Done");
-  // await fs.openSync(sOutputDir);
 })();

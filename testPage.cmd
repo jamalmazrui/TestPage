@@ -17,7 +17,7 @@ for /f "tokens=* delims=" %%A in (%urlList%) do (
 set line=%%A
 for /f "tokens=* delims= " %%B in ("!line!") do set line=%%B
 if not "!line!"=="" (
-echo !line!
+echo Testing !line!
 "!node!" "!testPage!" "!line!"
 )
 )
