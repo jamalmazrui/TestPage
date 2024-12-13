@@ -64,6 +64,14 @@ function generateUniqueDirName(sRootName) {
     sPageTitle = await sPageTitle.replace(/\s+/gi, " ").trim();
 
     sOutputDir = await generateUniqueDirName(sPageTitle);
+    await fs.mkdirSync(sOutputDir);
+
+    let sScreenshotPng = await path.join(sOutputDir, "screenshot.png");
+    await page.screenshot({ path: sScreenshotPng, fullPage: true });
+    let sPageContent = await page.content();
+    let sPageHtml = await path.join(sOutputDir, "page.html");
+    await fs.writeFileSync(sPageHtml, sPageContent);
+
     console.log(path.basename(sOutputDir));
     console.log();
     let sOldYml = await fs.readFileSync(sSourceYml, "utf-8");
