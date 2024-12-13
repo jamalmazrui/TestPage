@@ -29,6 +29,6 @@ On Windows, a batch file, TestPage.cmd, is also available that can test multiple
 
 where \<File\> is a text file containing a URL on each line.
 
-The program will run the Microsoft Edge browser with the API of [IBM Accessibility Checker](https://www.npmjs.com/package/accessibility-checker). A unique subdirectory will be created for each page tested, based on its title, and if needed, a numeric suffix. The test results will be contained there in various file formats. The HTML content of the page and a screenshot of the page are also saved.
+The program will run the Microsoft Edge browser with the API of [IBM Accessibility Checker](https://www.npmjs.com/package/accessibility-checker). A unique subdirectory will be created for each page tested, based on its title, and if needed, a numeric suffix. The test results will be contained there in various file formats. To review the source of the results, the HTML content, screenshot, and accessibility tree of the page tested are also saved.
 
 Note that automated testing only catches about a third of accessibility errors, so manual testing is also needed to evaluate WCAG conformance.

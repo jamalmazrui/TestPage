@@ -71,6 +71,9 @@ function generateUniqueDirName(sRootName) {
     let sPageContent = await page.content();
     let sPageHtml = await path.join(sOutputDir, "page.html");
     await fs.writeFileSync(sPageHtml, sPageContent);
+    let sTreeJson = await path.join(sOutputDir, "tree.json");
+  let dTree = await page.accessibility.snapshot();
+await fs.writeFileSync(sTreeJson, JSON.stringify(dTree));
 
     console.log(path.basename(sOutputDir));
     console.log();
