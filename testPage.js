@@ -25,23 +25,6 @@ function generateUniqueDirName(sRootName) {
   return sDirPath;
 }
 
-function generateUniqueFileName(sRootName, sExtension) {
-  let sFilePath = path.join(sOutputDir, `${sRootName}.${sExtension}`);
-  let iCount = 1;
-  while (fs.existsSync(sFilePath)) {
-    sFilePath = path.join(
-      sOutputDir,
-      `${sRootName}-${String(iCount).padStart(2, "0")}.${sExtension}`,
-    );
-    iCount++;
-  }
-  return sFilePath;
-}
-
-function renameIfExists(sOldPath, sNewPath) {
-  if (fs.existsSync(sOldPath)) fs.renameSync(sOldPath, sNewPath);
-}
-
 // main
 
 (async () => {
